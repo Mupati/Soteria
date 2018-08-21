@@ -1,4 +1,4 @@
-# soteria
+# Soteria
 
 > Vue + Devless Major Project
 
@@ -7,6 +7,9 @@
 ``` bash
 # install dependencies
 npm install
+
+# configure devless
+set token, domain, service and table
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -27,4 +30,5 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader) and [docs for devless](https://devless.gitbook.io/devless-docs-1-3-0/
+)
