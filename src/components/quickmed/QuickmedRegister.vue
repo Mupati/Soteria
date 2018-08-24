@@ -116,7 +116,7 @@
 								return;
 							}
 							SDK.setToken(resp.payload.result.token);
-							that.$router.push({ path: "/dashboard"});
+							that.$router.push({ path: "/quickmed/dashboard"});
 						});			
 			}
 		}

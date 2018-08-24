@@ -41,9 +41,9 @@
 			<img src="@/assets/logo2.png" class="img img-fluid">		
 			<form role="form" class="mt-4">
 			        <div class="form-group">
-						<input type="text" name="location" class="form-control"  placeholder="Enter Your Location">
+						<input type="text" ref="search" class="form-control"  placeholder="Enter Your Location">
 					</div>
-				<button type="submit" class="btn btn-lg btn-success">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
+				<button type="submit" class="btn btn-lg btn-success" @click.prevent="search">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
 			</form>
 		<!--	<form role="form">
 		 	<div class="form-group">
@@ -145,6 +145,7 @@
 			return{
 				credentials:{},
 				error: false,
+				searchResults:{}
 			}
 		},
 
@@ -172,11 +173,25 @@
 					});
 				
 			},
-/*
-			upload: function(){
+/*{where:["location," +this.$refs.search.value]}*/
+			search: function(){
+				var that = this;
+				SDK.queryData("Ninja", "details",{where:["location," +this.$refs.search.value],related: "*"}, 
+					function(res){
+						if(res.payload.results.length == 0){
+							console.log('nothing found');
+							return;
+						}
+				  that.searchResults = res.payload.results;
+				  that.$router.push({
+				 		name: 'QuickmedSearchResults',
+				 		params:{
+				 				searchResults: that.searchResults 
+				 			   }
 
-			}
-*/
+				 		});
+					});
+				}
 			
 			}
 		

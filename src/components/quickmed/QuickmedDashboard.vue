@@ -5,7 +5,8 @@
 				<h2>Dashboard</h2>
 				<div class="profile">
 					<div class="text-center">
-					<img :src="details.image">
+					<img v-bind:src="defaultPic" id="profilePic" :alt="profileInfo.image">
+					<!-- <p>{{profileInfo.image}}</p> -->
 					</div>
 				</div>
 				<hr>
@@ -88,11 +89,8 @@
 					    <label for="userEmail">Email address</label>
 					    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" v-model="userInfo.email" required="true">
 					  </div>
-					  <div class="form-group">
-					    <label for="image">Profile Picture</label>
-    				<input type="file" class="form-control-file" v-on:change="updatePic" accept="image/*" id="pic" name="image">
-  						</div>
-				  <button type="submit" class="btn btn-success text-center" v-on:click.prevent="updateuserInfo">Update</button>
+					
+				  <button type="submit" class="btn btn-success text-center" v-on:click="updateuserInfo">Update</button>
 				</form>
 				      </div>
 				      <div class="modal-footer">
@@ -144,6 +142,11 @@
 	    <label for="hospital">Hospital</label>
 	    <input type="text" class="form-control" id="hospital" placeholder="Stationed Hospital" v-model="profileInfo.hospital" required="true">
 	   </div>
+
+	    <div class="form-group">
+		    <label for="image">Profile Picture</label>
+			<input type="file" class="form-control-file" v-on:change="updatePic" accept="image/*" id="pic" name="image">
+		</div>
 
 	  <button type="submit" class="btn btn-success text-center" v-on:click.prevent="updateprofileInfo">Update</button>
 	</form>
@@ -202,12 +205,14 @@ export default {
 				};
 				SDK.queryData("Ninja", "details", params, function(res) {
 					that.profileInfo = res.payload.results[0];
+
 					if (that.profileInfo == undefined) {
 						that.profileInfo = {};
 					}
-					/*console.log(that.profileInfo);*/
+					/*console.log("ProfileInfo: "+that.profileInfo);*/
 					if (res.payload.results != false) {
 						that.addedprofileAlready = !that.addedprofileAlready;
+						that.defaultPic = that.profileInfo.image;
 					}
 				});
 			}
@@ -217,8 +222,9 @@ export default {
 	data() {
 		return {
 			details: {
-				"image": null,
+			/*	"image": null*/
 			},
+			defaultPic: '/static/img/default-user.png' /*'https://res.cloudinary.com/dblppc6ff/image/upload/v1534893723/zvkratmgfsivonnkr8ur.png'*/,
 			profileInfo: {},
 			userInfo: {},
 			addedprofileAlready: true,
@@ -281,7 +287,7 @@ export default {
 				hospital: that.profileInfo.hospital,
 				work_id: that.profileInfo.work_id,
 				license: that.profileInfo.license,
-				image: that.profileInfo.image
+				/*image: that.profileInfo.image*/
 			};
 			SDK.updateData(
 				"Ninja",
@@ -330,4 +336,9 @@ export default {
 
 
 <style scoped>
+#profilePic{
+	height: 10em;
+	width: 10em;
+	border-radius: 2em;
+}
 </style>

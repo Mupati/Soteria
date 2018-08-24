@@ -1,0 +1,26 @@
+Finish up with Personnel Search Feature
+Breadcrumb
+Delete and replace old profile pic
+write code to check the size of pic being uploaded
+
+
+ideas for IFix
+-Register Mechanics, Plumbers and these Artisans
+-Location thing
+-Map Thing
+-work out estimates
+
+
+
+Pharmshop
+-Online Pharmacy - E-commerce
+-Portal for each Pharmacy
+-CRUD for drugs available.
+
+
+----------------------------------------
+----------------------------------------
+
+Progress update:
+Done query on Quickmed search page and console logged.
+Have to redirect to QuickmedSearchResults page for the user to view.

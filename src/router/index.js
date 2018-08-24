@@ -14,6 +14,7 @@ import Ifix from '@/components/Ifix'
 import QuickmedRegister from '@/components/quickmed/QuickmedRegister'
 import QuickmedFeedback from '@/components/quickmed/QuickmedFeedback'
 import QuickmedDashboard from '@/components/quickmed/QuickmedDashboard'
+import QuickmedSearchResults from '@/components/quickmed/QuickmedSearchResults'
 
 
 Vue.use(vueSmoothScroll)
@@ -38,6 +39,7 @@ export default new Router({
       meta:{
       			'title': 'Soteria - QuickMed'
      	   },
+      props: true
 
     },
 
@@ -64,7 +66,16 @@ export default new Router({
            'title': 'QuickMed - User Dashboard'
             } 
     },
-
+    
+    { 
+      path: '/quickmed/personnel', 
+      name: 'QuickmedSearchResults',
+      component: QuickmedSearchResults,
+      meta:{
+           'title': 'QuickMed - Personnel Available'
+            },
+      props: true /*[true,'searchResults']*/
+    },  
    /* End of QuickMed pages*/
 
    /*Pharmshop pages*/
