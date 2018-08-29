@@ -5,9 +5,9 @@
 			<div class="col-sm-12 col-md-4 offset-md-4 text-center">
 				<router-link  to="/quickmed"><img src="@/assets/logo2.png" class="img img-fluid"></router-link>
 			</div>
-			<div class="col-sm-12 col-md-4 offset-md-4">
-			<nav aria-label="breadcrumb" class="text-center">
-			  	<ol class="breadcrumb">
+			<div class="col-8 offset-2 col-sm-6 offset-sm-2 col-md-3 offset-md-4  text-center">
+			<nav aria-label="breadcrumb">
+			  	<ol class="breadcrumb float-sm-right">
 			    	<li class="breadcrumb-item"><router-link to="/quickmed">Home</router-link></li>
 			    	<li class="breadcrumb-item active" aria-current="page">Register</li>
 			  	</ol>
@@ -125,7 +125,12 @@
 
 
 <style scoped>
-
+a{
+	text-decoration: none;
+}
+.breadcrumb{
+	background: none;
+}
 .signup-container{
 	box-sizing: border-box;
 }

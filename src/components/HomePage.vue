@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="home">
     <div class="container mt-3">
       <div class="row">
         <div class="col-sm-4 offset-4 text-center">
@@ -8,9 +8,9 @@
       </div>
     </div>
 
-  <div class="container mt-5">
+  <div class="container my-5">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-12 col-md-4">
         <div class="card text-center">
           <div class="card-body">
              <img class="card-img-top" src="@/assets/logo2.png" alt="QuickMed">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-       <div class="col-sm-4 my-sm-4 my-md-0">
+       <div class="col-sm-12 col-md-4 my-sm-4 my-md-0">
       <div class="card text-center">
           <div class="card-body">
             <img class="card-img-top" src="@/assets/logo2.png" alt="Pharmshop">
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-       <div class="col-sm-4">
+       <div class="col-sm-12 col-md-4">
         <div class="card text-center">
           <div class="card-body">
             <img class="card-img-top" src="@/assets/logo2.png" alt="Ifix">
@@ -57,6 +57,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#home{
+  background-image: linear-gradient(0deg, #ffc  30%, #81cfd8);  /*#7961aa  #81cfd8 #b1a3cd*/
+}
+
 .card-body img{
   width: 10em;
   height: 8em;

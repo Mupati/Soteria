@@ -14,7 +14,7 @@ import Ifix from '@/components/Ifix'
 import QuickmedRegister from '@/components/quickmed/QuickmedRegister'
 import QuickmedFeedback from '@/components/quickmed/QuickmedFeedback'
 import QuickmedDashboard from '@/components/quickmed/QuickmedDashboard'
-
+import QuickmedSearchResults from '@/components/quickmed/QuickmedSearchResults'
 
 Vue.use(vueSmoothScroll)
 Vue.use(VueSwal)
@@ -46,7 +46,7 @@ export default new Router({
       component: QuickmedRegister,
       meta:{
             'title': 'QuickMed - Register'
-           } 
+           },
      },
 
     { 
@@ -63,6 +63,16 @@ export default new Router({
       meta:{
            'title': 'QuickMed - User Dashboard'
             } 
+    },
+
+    { 
+      path: '/quickmed/personnel', 
+      name: 'QuickmedSearchResults',
+      component: QuickmedSearchResults,
+      meta:{
+           'title': 'QuickMed - Personnel Available'
+            },
+      props: true,
     },
 
    /* End of QuickMed pages*/

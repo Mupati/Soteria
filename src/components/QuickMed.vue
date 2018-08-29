@@ -3,10 +3,11 @@
 <!--Navigation-->
 <div class="container">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3">
-	  <router-link to="/" class="navbar-brand ml-5">Soteria</router-link>
+	  <router-link to="/" class="navbar-brand ml-5"><img src="@/assets/soteria-text.png"></router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
 
   <div class="collapse navbar-collapse d-sm-flex justify-content-end" id="topNav">
     <form class="form-inline my-2 my-lg-0">
@@ -25,11 +26,11 @@
 </div>
 
 <div class="container mt-4 pt-5" id="nav2">
-	<div class="bg-light d-flex justify-content-center border-bottom border-info rounded-bottom">
+	<div class="row bg-light d-flex justify-content-around border-bottom border-info rounded-bottom">
 		<ul class="list-inline">
-		  <li class="list-inline-item"><a href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }">Services</a></li>
-		  <li class="list-inline-item mx-5"><router-link to="/quickmed/feedback">Feedback</router-link></li>
-		  <li class="list-inline-item"><router-link to="/quickmed/register">Register</router-link></li>
+		  <li class="list-inline-item mr-md-5"><a href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }">Services</a></li>
+		  <li class="list-inline-item mx-md-5 px-md-5"><router-link to="/quickmed/feedback">Feedback</router-link></li>
+		  <li class="list-inline-item ml-md-5"><router-link to="/quickmed/register">Register</router-link></li>
 		</ul>
 	</div>
 </div>
@@ -38,12 +39,20 @@
 <div class="container my-5 pt-5 pb-4">
 	<div class="row my-5 py-5">
 		<div class="col-sm-12 col-md-8 offset-md-2 text-center">
+			  <!-- alert box for search box -->
+			  <div v-if="noKeyword" class="alert alert-danger alert-dismissible fade show" role="alert">
+				  <strong>There is no Personnel avaible in Location Entered - <em>{{searchlocation}}</em></strong>.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			   </div>
+
 			<img src="@/assets/logo2.png" class="img img-fluid">		
 			<form role="form" class="mt-4">
 			        <div class="form-group">
-						<input type="text" name="location" class="form-control"  placeholder="Enter Your Location">
+						<input type="text" name="location" class="form-control" v-model="searchlocation" ref="search" placeholder="Enter Your Location">
 					</div>
-				<button type="submit" class="btn btn-lg btn-success">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
+				<button type="submit" class="btn btn-lg btn-success" @click.prevent="searchPersonnel">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
 			</form>
 		<!--	<form role="form">
 		 	<div class="form-group">
@@ -56,7 +65,7 @@
 	</div>
 </div>
 
-<div id="serv">
+<section id="serv">
 <div class="container pt-3">			
 	<h3 class="text-center mb-2"> PERSONNEL AVAILABLE</h3>		
 	<div class="row">
@@ -115,7 +124,7 @@
 
 	</div>
 </div>
-</div>
+</section>
 
 <!--Footer-->
 
@@ -145,6 +154,10 @@
 			return{
 				credentials:{},
 				error: false,
+				searchResults:{},
+				noKeyword: false,
+				searchlocation: ''
+
 			}
 		},
 
@@ -172,11 +185,33 @@
 					});
 				
 			},
-/*
-			upload: function(){
+
+			searchPersonnel: function(){
+				var that = this
+				var params = {
+					where: ["location,"+this.$refs.search.value],
+					related: "*"
+				};
+				SDK.queryData("Ninja","details", params, function(res){
+					that.searchResults = res.payload.results;
+					console.log(that.searchResults);
+					if(that.searchResults.length != 0){
+					that.$router.push({
+						name: "QuickmedSearchResults",
+						params: {searchResults: that.searchResults}
+						});
+					}
+					else{
+						that.noKeyword = true;
+						setTimeout(location.reload.bind(location), 5000);
+						/*location.reload();*/
+					/*	return;*/
+
+					}
+					})
 
 			}
-*/
+
 			
 			}
 		
@@ -184,6 +219,12 @@
 </script>
 
 <style scoped>
+	.navbar-brand img{
+		height: 1.4em; 
+		width: 3.5em;
+		margin: 0;
+		padding: 0;	 
+	}
 	.card img{
 		width: 10em;
 		height: 10em;
@@ -199,5 +240,9 @@
 		  right: 0;
 		  left: 0;
 		  z-index: 1029;
+	}
+
+	#serv{
+		background: #f6f8f9;
 	}
 </style>

@@ -265,6 +265,7 @@ export default {
 					that.userInfo.last_name
 				],
 				function(res) {
+					console.log(res.payload.results);
 					if (res.payload.result != false) {
 						that.successUpdate = true;
 					}
