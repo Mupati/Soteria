@@ -1,8 +1,8 @@
 <template>
-	<div>	
+	<div id="quickmedhome">	
 <!--Navigation-->
 <div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3" id="mainNav">
 	  <router-link to="/" class="navbar-brand ml-5"><img src="@/assets/soteria-text.png"></router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -66,10 +66,9 @@
 </div>
 
 <section id="serv">
-<div class="container pt-3">			
+<div class="container py-5">			
 	<h3 class="text-center mb-2"> PERSONNEL AVAILABLE</h3>		
 	<div class="row">
-
 			<div class="col-sm">
 				<div class="card border-0 text-center">
 				  <div class="card-body">
@@ -203,6 +202,13 @@
 					}
 					else{
 						that.noKeyword = true;
+						/*that.$router.go({
+						    path: that.$router.path,
+						    query: {
+						        t: + new Date()
+						    }
+						})*/
+						/*that.$forceUpdate();*/
 						setTimeout(location.reload.bind(location), 5000);
 						/*location.reload();*/
 					/*	return;*/
@@ -219,6 +225,12 @@
 </script>
 
 <style scoped>
+	#quickmedhome{
+		background: linear-gradient(90deg, #ddc 40%, #d40);
+	}
+	#mainNav, #nav2 .row{
+		background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important; 
+	}
 	.navbar-brand img{
 		height: 1.4em; 
 		width: 3.5em;
@@ -240,6 +252,7 @@
 		  right: 0;
 		  left: 0;
 		  z-index: 1029;
+		/*  background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important; */
 	}
 
 	#serv{

@@ -187,6 +187,7 @@ export default {
 					"Sorry, Your account has not been activated yet",
 					"details"
 				);
+				that.$router.push({ path: "/quickmed" });
 			} else {
 				that.$swal(
 					"QuickMed Dashboard",

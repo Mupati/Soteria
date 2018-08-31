@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="register">
 	<div class="container py-2" id="signup-container">
 		<div class="row pb-3">
 			<div class="col-sm-12 col-md-4 offset-md-4 text-center">
@@ -115,8 +115,9 @@
 								that.errorMessage = 'No details found';
 								return;
 							}
+							
 							SDK.setToken(resp.payload.result.token);
-							that.$router.push({ path: "/dashboard"});
+							that.$router.push({ path: "/quickmed/dashboard"});
 						});			
 			}
 		}
@@ -125,11 +126,17 @@
 
 
 <style scoped>
+#register{
+	background: linear-gradient(90deg, #ddc 40%, #d40);
+}
 a{
 	text-decoration: none;
 }
 .breadcrumb{
 	background: none;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
 }
 .signup-container{
 	box-sizing: border-box;

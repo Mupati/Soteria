@@ -44,6 +44,13 @@
 	export default{
 		props:['searchResults'],
 
+		created(){
+			console.log(this.searchResults);
+			if(this.searchResults == undefined){
+				this.$router.push({path: "/quickmed"});
+			}
+		},
+
 		data(){
 			return{
 			results: this.searchResults

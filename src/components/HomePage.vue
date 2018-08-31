@@ -1,15 +1,15 @@
 <template>
 <div id="home">
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-sm-4 offset-4 text-center">
+    <div class="container pt-3 py-5">
+      <div class="row pb-5">
+        <div class=" col-12 col-sm-6 offset-md-3 col-md-4 offset-md-4 text-center">
             <img src="@/assets/soteria.png">
         </div>
       </div>
-    </div>
+   <!--  </div> -->
 
-  <div class="container my-5">
-    <div class="row">
+<!--   <div class="container py-sm-5 py-md-5"> -->
+    <div class="row py-5">
       <div class="col-sm-12 col-md-4">
         <div class="card text-center">
           <div class="card-body">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-       <div class="col-sm-12 col-md-4 my-sm-4 my-md-0">
+       <div class="col-sm-12 my-5 my-sm-0 col-md-4 my-md-0">
       <div class="card text-center">
           <div class="card-body">
             <img class="card-img-top" src="@/assets/logo2.png" alt="Pharmshop">
@@ -58,7 +58,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #home{
-  background-image: linear-gradient(0deg, #ffc  30%, #81cfd8);  /*#7961aa  #81cfd8 #b1a3cd*/
+  background-image: linear-gradient(90deg, #afc  40%, #81cfd8);  /*#7961aa  #81cfd8 #b1a3cd*/
 }
 
 .card-body img{
