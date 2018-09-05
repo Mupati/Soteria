@@ -12,7 +12,7 @@
 <script>
 	export default{
 
-
+		name: 'Ifix', 
 		data(){
 			return{
 				'msg': 'God Loves You'

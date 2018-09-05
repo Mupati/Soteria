@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 	  <transition>
-	  	<keep-alive>
+	  	<keep-alive include="QuickmedSearchResults">
 	    	<router-view></router-view>
 	  	</keep-alive>
 	  </transition>

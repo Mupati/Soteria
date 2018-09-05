@@ -12,7 +12,7 @@
 <script>
 	export default{
 
-
+		name: 'Pharmshop', 
 		data(){
 			return{
 				'msg':'Just a little pain'

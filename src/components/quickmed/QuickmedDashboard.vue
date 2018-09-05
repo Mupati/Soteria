@@ -168,6 +168,7 @@
 
 <script>
 export default {
+	name: 'QuickmedDashboard', 
 
 	beforeCreate() {
 		var that = this;

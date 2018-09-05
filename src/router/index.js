@@ -42,7 +42,8 @@ export default new Router({
     },
 
     {
-      path: '/quickmed/register', 
+      path: '/quickmed/register',
+      name: 'QuickmedRegister', 
       component: QuickmedRegister,
       meta:{
             'title': 'QuickMed - Register'
@@ -50,7 +51,8 @@ export default new Router({
      },
 
     { 
-      path: '/quickmed/feedback', 
+      path: '/quickmed/feedback',
+      name: 'QuickmedFeedback', 
       component: QuickmedFeedback,
       meta:{
            'title': 'QuickMed - Send Feedback'
@@ -59,6 +61,7 @@ export default new Router({
 
     { 
       path: '/quickmed/dashboard', 
+      name: 'QuickmedDashboard',
       component: QuickmedDashboard,
       meta:{
            'title': 'QuickMed - User Dashboard'

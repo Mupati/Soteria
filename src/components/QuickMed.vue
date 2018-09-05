@@ -50,7 +50,7 @@
 			<img src="@/assets/logo2.png" class="img img-fluid">		
 			<form role="form" class="mt-4">
 			        <div class="form-group">
-						<input type="text" name="location" class="form-control" v-model="searchlocation" ref="search" placeholder="Enter Your Location">
+						<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
 					</div>
 				<button type="submit" class="btn btn-lg btn-success" @click.prevent="searchPersonnel">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
 			</form>
@@ -149,6 +149,7 @@
 <script>
 
 	export default{
+		name: 'QuickMed',
 		data(){
 			return{
 				credentials:{},
@@ -159,6 +160,7 @@
 
 			}
 		},
+
 
 		methods:{
 			login: function() {	
@@ -188,17 +190,21 @@
 			searchPersonnel: function(){
 				var that = this
 				var params = {
-					where: ["location,"+this.$refs.search.value],
+					where: ["location,"+this.searchlocation],
 					related: "*"
 				};
 				SDK.queryData("Ninja","details", params, function(res){
 					that.searchResults = res.payload.results;
 					console.log(that.searchResults);
 					if(that.searchResults.length != 0){
+				/*	that.$nextTick(function(){*/
 					that.$router.push({
+						path:'/quickmed/personnel/',
 						name: "QuickmedSearchResults",
+						query:{location: that.searchlocation},
 						params: {searchResults: that.searchResults}
 						});
+			/*		})*/
 					}
 					else{
 						that.noKeyword = true;
@@ -209,7 +215,7 @@
 						    }
 						})*/
 						/*that.$forceUpdate();*/
-						setTimeout(location.reload.bind(location), 5000);
+					/*	setTimeout(location.reload.bind(location), 5000);*/
 						/*location.reload();*/
 					/*	return;*/
 
