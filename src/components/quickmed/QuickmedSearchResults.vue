@@ -47,10 +47,10 @@
 		props:['searchResults'],
 
 		created(){
-			console.log(this.searchResults);
 			if(this.searchResults == undefined){
 				this.$router.push({path: "/quickmed"});
 			}
+
 			this.results = this.searchResults
 		},
 
@@ -62,11 +62,12 @@
 
 		watch:{// watch change in search keyword even when keep alive is used on the router view
 			searchResults:function(newVal, oldVal){
+				this.results = this.searchResults
 				if(newVal == undefined){
-				this.results = oldVal
+					this.results = oldVal
 				}
 				if(oldVal == undefined){
-				this.results = newVal
+					this.results = newVal
 				}
 			}
 		},

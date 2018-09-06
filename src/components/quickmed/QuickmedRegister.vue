@@ -16,42 +16,49 @@
 		</div>
 		<div class="row py-5">
 			<div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
-				<p v-if="error" class="text-danger">{{errorMessage}}</p>
+			<!-- 	<p  class="text-danger">{{errorMessage}}</p> -->
+			<div v-if="error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+				  <strong>{{errorMessage}}</strong>.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			   </div>
 				<form>
 					<div class="form-row">
 					    <div class="form-group col-md-6">
 						    <label for="givenName">Given Name</label>
-						    <input type="text" class="form-control" id="givenName" aria-describedby="givennameHelp" placeholder="Enter Given Name" v-model="details.givenName" required="true">
+						    <input type="text" class="form-control" id="givenName" aria-describedby="givennameHelp" placeholder="Enter Given Name" v-model="details.givenName" required>
 					 	</div>
 					  	<div class="form-group col-md-6"> 
 						    <label for="lastName">Last Name</label>
-						    <input type="text" class="form-control" id="lastName" aria-describedby="lastnameHelp" placeholder="Enter Last Name" v-model="details.lastName" required="true">
+						    <input type="text" class="form-control" id="lastName" aria-describedby="lastnameHelp" placeholder="Enter Last Name" v-model="details.lastName" required>
 						</div>
 					</div>
 					
 					<div class="form-row">
 					  <div class="form-group col-md-6">
 					    <label for="username">Username</label>
-					    <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Enter Username" v-model="details.userName" required="true">
+					    <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Enter Username" v-model="details.userName" required>
 					  </div>
 					  <div class="form-group col-md-6">
 					    <label for="userEmail">Email address</label>
-					    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter Email" v-model="details.email" required="true">
+					    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter Email" v-model="details.email" required>
 					  </div>
 					</div>
 					<div class="form-row">
 					   <div class="form-group col-md-6">
 					    <label for="password">Password</label>
-					    <input type="password" class="form-control" id="passwordOne" placeholder="Password" v-model="details.pwd1" required="true">
+					    <input type="password" class="form-control" id="passwordOne" placeholder="Password" v-model="details.pwd1" required>
 					   </div>
 					   <div class="form-group col-md-6">
 					    <label for="password">Confirm Password</label>
 					    <input type="password" class="form-control" id="passwordTwo" placeholder="Retype Password"
-					    v-model="details.pwd2" required="true">
+					    v-model="details.pwd2" required>
 					  </div>
 					</div>
-					  
-					  <button type="submit" class="btn btn-success text-center" v-on:click.prevent="signup">Submit</button>
+					  <div class="d-flex justify-content-center mt-3 py-2 px-5">
+					  	<button type="submit" class="btn btn-success text-center" v-on:click.prevent="signup">Submit</button>
+					  </div>
 				</form>
 				
 			</div>
@@ -109,7 +116,8 @@
 						that.details.lastName
 					],
 						function(resp){
-							console.log(resp.payload.result);
+							/*console.log(resp.payload.result);
+							return;*/
 							if(resp.payload.result[0] == false){
 								that.error = true;
 								that.errorMessage = 'No details found';

@@ -5,7 +5,7 @@
 				<h2>Dashboard</h2>
 				<div class="profile">
 					<div class="text-center">
-					<img :src="details.image">
+					<img :src="profileInfo.image">
 					</div>
 				</div>
 				<hr>
@@ -186,7 +186,7 @@ export default {
 				that.$swal(
 					"Pending Activation",
 					"Sorry, Your account has not been activated yet",
-					"details"
+					"info"
 				);
 				that.$router.push({ path: "/quickmed" });
 			} else {
@@ -219,7 +219,7 @@ export default {
 	data() {
 		return {
 			details: {
-				"image": null,
+				/*"image": null,*/
 			},
 			profileInfo: {},
 			userInfo: {},
@@ -333,4 +333,8 @@ export default {
 
 
 <style scoped>
+img{
+	width: 8em;  
+	height: 8em; 
+}
 </style>

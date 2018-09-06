@@ -87,13 +87,21 @@
 			 feedback:{},
 			 userAlert:{
 			 	error:false,
-			 	errorMsg: "Error!. Feedback Submission Unsuccessful",
+			 	errorMsg: "Error!. Feedback Submission Unsuccessful. Check Your Form &#x1F614",
 			 	success:false,
 			 }
 			}
 		},
 
 		methods:{
+			isEmpty: function(obj){
+              	return jQuery.isEmptyObject(obj);
+           		},
+
+           	objSize: function(obj){
+           		return Object.keys(obj).length
+           	},
+
 			sendFeedback: function(){
 			var that = this;
 			/*var sent_feedback = {
@@ -103,7 +111,9 @@
 				"comment": that.feedback.comment
 			}*/
 			console.log(that.feedback);
-			if(that.feedback.name == null || that.feedback.email == null || that.feedback.phone == null || that.feedback.comment == null){
+			/*alert(that.objSize(that.feedback));
+			alert(that.isEmpty(that.feedback));*/
+			if(that.isEmpty(that.feedback) || that.objSize(that.feedback)<3){
 					that.userAlert.errorMsg = "Please fill the form before you Submit"
 					that.userAlert.error = true;
 					console.log("Escaped this if");
@@ -112,7 +122,7 @@
 			SDK.addData("Ninja", "feedback", that.feedback,
 				function(res){
 					console.log(res.payload);
-					if(res.payload.length == 0 && res.payload.entry_id > 0){
+					if(res.payload.length != 0 && res.payload.entry_id > 0){
 						that.userAlert.success = true;
 					}
 					else{
@@ -129,6 +139,10 @@
 			/*setTimeout(location.reload.bind(location), 5000);*/
 			setTimeout(that.$router.push({path:"/quickmed/feedback"}), 5000);
 		}
+	},
+
+	computed:{
+          
 	}
 
 	}
