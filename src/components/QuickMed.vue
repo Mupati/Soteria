@@ -215,7 +215,7 @@
 						    }
 						})*/
 						/*that.$forceUpdate();*/
-						setTimeout(location.reload.bind(location), 5000);
+					/*	setTimeout(location.reload.bind(location), 5000);*/
 						/*location.reload();*/
 					/*	return;*/
 
