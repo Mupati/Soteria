@@ -12,6 +12,7 @@ import Ifix from '@/components/Ifix'
 
 /*components for quickmed*/
 import QuickmedRegister from '@/components/quickmed/QuickmedRegister'
+import QuickmedLogin from '@/components/quickmed/QuickmedLogin'
 import QuickmedFeedback from '@/components/quickmed/QuickmedFeedback'
 import QuickmedDashboard from '@/components/quickmed/QuickmedDashboard'
 import QuickmedSearchResults from '@/components/quickmed/QuickmedSearchResults'
@@ -50,6 +51,14 @@ export default new Router({
            },
      },
 
+     {
+      path: '/quickmed/login',
+      name: 'QuickmedLogin', 
+      component: QuickmedLogin,
+      meta:{
+            'title': 'QuickMed - Log in'
+           },
+     },
     { 
       path: '/quickmed/feedback',
       name: 'QuickmedFeedback', 

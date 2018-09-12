@@ -1,16 +1,65 @@
 <template>
-	<div id="quickmedhome">	
-<!--Navigation-->
-<div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3" id="mainNav">
-	  <router-link to="/" class="navbar-brand ml-5"><img src="@/assets/soteria-text.png"></router-link>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<div id="quickmedhome">	
+<!-- <header class="d-flex-row"> -->
+<header class="navbar navbar-expand-lg fixed-top justify-content-between" :class="{scrolled: scrollPosition > 50}" id="mainNav">
+	<router-link to="/" class="navbar-brand">
+	  	<img src="@/assets/soteria-text.png" class="d-inline">
+	</router-link>
+	<ul class="navbar-nav flex-row d-none d-md-flex pt-2">
+		<li class="navbar-item active"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
+		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
+		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
+	</ul>
+	<span class="navbar-text flex-row d-none d-md-flex mr-3"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-2x fa-user" data-toggle="tooltip" data-placement="left" title="Personnel Login"></i></router-link></span>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fas fa-2x fa-bars"></i></span>
   </button>
+</header>
+<div class="collapse navbar-collapse" id="topNav">
+	<ul class="navbar-nav px-4 pt-4 mt-5 float-right">
+		<li class="navbar-item active"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
+		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
+		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
+		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-user"></i> Log in</router-link></li>
+	</ul>
+	<div class="clearfix"></div>
+	<!-- <form class="px-4 pb-3 pt-5 mt-5">
+		<div class="form-group">
+		<label for="exampleDropdownFormEmail1">Email address</label>
+		<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+		</div>
+		<div class="form-group">
+		<label for="exampleDropdownFormPassword1">Password</label>
+		<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary">Sign in</button>
+	</form> -->
+</div>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
 
 
-  <div class="collapse navbar-collapse d-sm-flex justify-content-end" id="topNav">
-    <form class="form-inline my-2 my-lg-0">
+  <!-- <div class="collapse navbar-collapse d-sm-flex justify-content-end mr-sm-5" id="topNav"> -->
+	  <!-- <div class="dropdown dropleft mr-5">
+	  <button class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			 <i class="fas fa-user"></i>
+		</button>
+	  <div class="dropdown-menu dropdown-menu-left mr-5">
+			<form class="px-4 py-3">
+				<div class="form-group">
+				<label for="exampleDropdownFormEmail1">Email address</label>
+				<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+				</div>
+				<div class="form-group">
+				<label for="exampleDropdownFormPassword1">Password</label>
+				<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-primary">Sign in</button>
+			</form>
+		</div>
+	  </div> -->
+    <!-- <form class="form-inline my-2 my-lg-0">
     	<div class="form-group">
 			<input type="email" class="form-control" placeholder="Email Address"  v-model="credentials.email" required autofocus>
 		</div>
@@ -18,22 +67,29 @@
 			<input type="password" class="form-control" placeholder="Password" v-model="credentials.pwd" required>
 		</div>
 		<div class="form-group">
-      <input  type="submit" value="Log in" v-on:click.prevent="login" class="btn btn-outline-success my-2 my-sm-0 d-sm-block">
+      <input  type="submit" value="Log in" v-on:click.prevent="login" class="btn btn-outline-success">
   		</div>
-    </form>
-  </div>
-</nav>
-</div>
+    </form> -->
+  <!-- </div> -->
 
-<div class="container mt-4 pt-5" id="nav2">
-	<div class="row bg-light d-flex justify-content-around border-bottom border-info rounded-bottom">
-		<ul class="list-inline">
-		  <li class="list-inline-item mr-md-5"><a href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }">Personnel</a></li>
-		  <li class="list-inline-item mx-md-5 px-md-5"><router-link to="/quickmed/feedback">Feedback</router-link></li>
-		  <li class="list-inline-item ml-md-5"><router-link to="/quickmed/register">Register</router-link></li>
-		</ul>
+		<!-- </div>
 	</div>
-</div>
+</div> -->
+
+<!-- <div class="container pt-3 mt-5" id="nav2">
+	<div class="row bg-light justify-content-around border-bottom border-info rounded-bottom">
+		<div class="col-12"> -->
+<!-- <nav class="navbar bg-light border-bottom border-info rounded-bottom">
+	<ul class="navbar-nav">
+		<li class="navbar-item"><a href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }">Personnel</a></li>
+		<li class="navbar-item"><router-link to="/quickmed/feedback">Feedback</router-link></li>
+		<li class="navbar-item"><router-link to="/quickmed/register">Register</router-link></li>
+	</ul>
+</nav> -->
+<!-- </header> -->
+		<!-- </div>
+	</div>
+</div> -->
 
 <!--Contents-->
 <div class="container my-5 pt-5 pb-4">
@@ -156,7 +212,8 @@
 				error: false,
 				searchResults:{},
 				noKeyword: false,
-				searchlocation: ''
+				searchlocation: '',
+				scrollPosition: null,
 
 			}
 		},
@@ -222,24 +279,45 @@
 					}
 					})
 
-			}
+			},
+
+			updateScroll() {
+      			this.scrollPosition = window.scrollY
+    		}
 
 			
-			}
+			},
+
+			 mounted() {
+    			window.addEventListener('scroll', this.updateScroll);
+  			}
 		
 	}
 </script>
 
 <style scoped>
-	#quickmedhome{
-		background: linear-gradient(90deg, #ddc 40%, #d40);
+	#quickmedhome, header{
+		background: linear-gradient(90deg, #ddc 40%, #d40) !important;
 	}
-	#mainNav, #nav2 .row{
-		background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important; 
+	.fixed-top{
+		 transition:500ms ease;
 	}
+	.scrolled{
+  		background:#08090a80 !important;		
+	}
+	
+	/* .hvr-underline-from-left {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+} */
 	.navbar-brand img{
-		height: 1.4em; 
-		width: 3.5em;
+		height: 2.0em; 
+		width: 4.0em;
 		margin: 0;
 		padding: 0;	 
 	}
@@ -248,18 +326,18 @@
 		height: 12em;
 	}
 
-	li > a{
-		text-decoration: none;
+	.navbar li, #topNav li{
+		font-size: 1.5em;
 	}
 
-	#nav2{
-		 position: fixed;
-		  top: 0;
-		  right: 0;
-		  left: 0;
-		  z-index: 1029;
-		/*  background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important; */
-	}
+/* #nav2{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1029;
+	background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important;
+} */
 
 	#serv{
 		background: #f6f8f9;
