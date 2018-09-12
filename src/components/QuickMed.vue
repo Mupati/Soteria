@@ -1,95 +1,21 @@
 <template>
 <div id="quickmedhome">	
-<!-- <header class="d-flex-row"> -->
-<header class="navbar navbar-expand-lg fixed-top justify-content-between" :class="{scrolled: scrollPosition > 50}" id="mainNav">
+<header class="navbar navbar-expand-md  fixed-top mr-md-0 py-md-3" :class="{scrolled: scrollPosition > 50}" id="mainNav">
 	<router-link to="/" class="navbar-brand">
-	  	<img src="@/assets/soteria-text.png" class="d-inline">
+			<img src="@/assets/soteria-text.png" class="d-inline">
 	</router-link>
-	<ul class="navbar-nav flex-row d-none d-md-flex pt-2">
-		<li class="navbar-item active"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
+	<button class="navbar-toggler" type="button" @click="burgerChange" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"><i class="fas fa-2x fa-bars" :class="{'fas fa-times': newBurger}" ></i></span>
+	</button>
+<div class="collapse navbar-collapse justify-content-around" id="topNav">
+	<ul class="navbar-nav float-right">	
+		<li class="navbar-item active ml-md-5 pl-md-5"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
 		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
-		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
+		<li class="navbar-item mr-md-5 pr-md-5"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
+		<li class="navbar-item pl-md-5 ml-md-5"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-user"></i> Log in</router-link></li>
 	</ul>
-	<span class="navbar-text flex-row d-none d-md-flex mr-3"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-2x fa-user" data-toggle="tooltip" data-placement="left" title="Personnel Login"></i></router-link></span>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"><i class="fas fa-2x fa-bars"></i></span>
-  </button>
-</header>
-<div class="collapse navbar-collapse" id="topNav">
-	<ul class="navbar-nav px-4 pt-4 mt-5 float-right">
-		<li class="navbar-item active"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
-		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
-		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
-		<li class="navbar-item"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-user"></i> Log in</router-link></li>
-	</ul>
-	<div class="clearfix"></div>
-	<!-- <form class="px-4 pb-3 pt-5 mt-5">
-		<div class="form-group">
-		<label for="exampleDropdownFormEmail1">Email address</label>
-		<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-		</div>
-		<div class="form-group">
-		<label for="exampleDropdownFormPassword1">Password</label>
-		<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-		</div>
-		<button type="submit" class="btn btn-primary">Sign in</button>
-	</form> -->
 </div>
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-
-
-  <!-- <div class="collapse navbar-collapse d-sm-flex justify-content-end mr-sm-5" id="topNav"> -->
-	  <!-- <div class="dropdown dropleft mr-5">
-	  <button class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			 <i class="fas fa-user"></i>
-		</button>
-	  <div class="dropdown-menu dropdown-menu-left mr-5">
-			<form class="px-4 py-3">
-				<div class="form-group">
-				<label for="exampleDropdownFormEmail1">Email address</label>
-				<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-				</div>
-				<div class="form-group">
-				<label for="exampleDropdownFormPassword1">Password</label>
-				<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-				</div>
-				<button type="submit" class="btn btn-primary">Sign in</button>
-			</form>
-		</div>
-	  </div> -->
-    <!-- <form class="form-inline my-2 my-lg-0">
-    	<div class="form-group">
-			<input type="email" class="form-control" placeholder="Email Address"  v-model="credentials.email" required autofocus>
-		</div>
-		<div class="form-group mx-sm-2">
-			<input type="password" class="form-control" placeholder="Password" v-model="credentials.pwd" required>
-		</div>
-		<div class="form-group">
-      <input  type="submit" value="Log in" v-on:click.prevent="login" class="btn btn-outline-success">
-  		</div>
-    </form> -->
-  <!-- </div> -->
-
-		<!-- </div>
-	</div>
-</div> -->
-
-<!-- <div class="container pt-3 mt-5" id="nav2">
-	<div class="row bg-light justify-content-around border-bottom border-info rounded-bottom">
-		<div class="col-12"> -->
-<!-- <nav class="navbar bg-light border-bottom border-info rounded-bottom">
-	<ul class="navbar-nav">
-		<li class="navbar-item"><a href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }">Personnel</a></li>
-		<li class="navbar-item"><router-link to="/quickmed/feedback">Feedback</router-link></li>
-		<li class="navbar-item"><router-link to="/quickmed/register">Register</router-link></li>
-	</ul>
-</nav> -->
-<!-- </header> -->
-		<!-- </div>
-	</div>
-</div> -->
+</header>
 
 <!--Contents-->
 <div class="container my-5 pt-5 pb-4">
@@ -108,22 +34,15 @@
 			        <div class="form-group">
 						<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
 					</div>
-				<button type="submit" class="btn btn-lg btn-success" @click.prevent="searchPersonnel">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
+				<button type="submit" class="btn btn-lg btn-outline-primary" @click.prevent="searchPersonnel">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
 			</form>
-		<!--	<form role="form">
-		 	<div class="form-group">
-				<label for="image">Profile Picture</label>
-				<input type="file" class="form-control-file" accept="image/*">
-			</div>
-			<input type="submit" class="btn btn-primary" v-on:click="upload">
-			</form> -->
 		</div>
 	</div>
 </div>
 
 <section id="serv">
-<div class="container py-5">			
-	<h3 class="text-center mb-5"> PERSONNEL AVAILABLE</h3>		
+<div class="container py-5">
+	<h3 class="text-center mb-5"><i class="fas fa-2x fa-hospital"></i><br><br>PERSONNEL AVAILABLE</h3>		
 	<div class="row">
 			<div class="col-sm">
 				<div class="card border-0 text-center">
@@ -214,12 +133,17 @@
 				noKeyword: false,
 				searchlocation: '',
 				scrollPosition: null,
+				newBurger: false
 
 			}
 		},
 
 
 		methods:{
+			burgerChange: function(){
+				this.newBurger = !this.newBurger
+			},
+
 			login: function() {	
 				
 				var that = this;
@@ -284,8 +208,7 @@
 			updateScroll() {
       			this.scrollPosition = window.scrollY
     		}
-
-			
+	
 			},
 
 			 mounted() {
@@ -299,11 +222,9 @@
 	#quickmedhome, header{
 		background: linear-gradient(90deg, #ddc 40%, #d40) !important;
 	}
-	.fixed-top{
-		 transition:500ms ease;
-	}
+
 	.scrolled{
-  		background:#08090a80 !important;		
+		background:#08090a80 !important;		
 	}
 	
 	/* .hvr-underline-from-left {
@@ -327,17 +248,8 @@
 	}
 
 	.navbar li, #topNav li{
-		font-size: 1.5em;
+		font-size: 1.4em;
 	}
-
-/* #nav2{
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 1029;
-	background-image: linear-gradient(90deg, #afc  40%, #81cfd8) !important;
-} */
 
 	#serv{
 		background: #f6f8f9;

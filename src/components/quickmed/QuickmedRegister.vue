@@ -1,7 +1,7 @@
 <template>
 	<div id="register">
-	<div class="container py-2" id="signup-container">
-		<div class="row pb-3">
+	<div class="container py-1" id="signup-container">
+		<div class="row pb-1">
 			<div class="col-sm-12 col-md-4 offset-md-4 text-center">
 				<router-link  to="/quickmed"><img src="@/assets/logo2.png" class="img img-fluid"></router-link>
 			</div>
@@ -14,7 +14,7 @@
 			</nav>
 			</div>
 		</div>
-		<div class="row py-5">
+		<div class="row py-3">
 			<div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
 			<!-- 	<p  class="text-danger">{{errorMessage}}</p> -->
 			<div v-if="error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
@@ -23,6 +23,9 @@
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
+			   <div class="card">
+			    <div class="card-body">
+                    <h3 class="card-title text-center">Register Here</h3>
 				<form>
 					<div class="form-row">
 					    <div class="form-group col-md-6">
@@ -57,9 +60,11 @@
 					  </div>
 					</div>
 					  <div class="d-flex justify-content-center mt-3 py-2 px-5">
-					  	<button type="submit" class="btn btn-success text-center" v-on:click.prevent="signup">Submit</button>
+					  	<button type="submit" class="btn btn-outline-success text-center" v-on:click.prevent="signup">Sign up <i class="fas fa-user-plus"></i></button>
 					  </div>
 				</form>
+			    </div>
+			   </div>
 				
 			</div>
 			
@@ -146,6 +151,10 @@ a{
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
 }
+.card{
+	background:#08090a80 !important;
+}
+	
 .signup-container{
 	box-sizing: border-box;
 }

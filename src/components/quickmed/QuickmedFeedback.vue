@@ -31,6 +31,8 @@
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
+	<div class="card">
+	<div class="card-body">
     <fieldset>
     <legend class="text-center">User Feedback Form</legend>
         <form role="form">
@@ -52,9 +54,11 @@
                 <label role="comment" class="control-label">Your Comments</label>
                 <textarea v-model="feedback.comment" class="form-control" required="true"></textarea> 
             </div>
-                <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-success">Submit</button>
+                <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success">Send Feedback <i class="fas fa-comment"></i></button>
         </form>
     </fieldset>
+	</div>
+	</div>
         </div>
     </div>
 </div>
@@ -161,6 +165,10 @@
 }
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
+}
+
+.card{
+	background:#08090a80 !important;
 }
 	
 </style>

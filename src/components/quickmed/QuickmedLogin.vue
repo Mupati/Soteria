@@ -44,7 +44,7 @@
                         </div>
                          -->
 
-                        <button type="submit" v-on:click.prevent="login" class="btn btn-outline-primary float-right">Log in</button>
+                        <button type="submit" v-on:click.prevent="login" class="btn btn-outline-primary float-right">Log in <i class="fas fa-user"></i></button>
 			        </form>
                 </div>
                 </div>
@@ -116,6 +116,7 @@ export default{
 #login{
     background: linear-gradient(90deg, #ddc 40%, #d40);
 }
+
 .card img{
     height: 7em;
     width: 8em;
