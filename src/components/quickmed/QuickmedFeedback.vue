@@ -32,7 +32,7 @@
 				  </button>
 			   </div>
 	<div class="card">
-	<div class="card-body">
+	<div class="card-body py-5">
     <fieldset>
     <legend class="text-center">User Feedback Form</legend>
         <form role="form">
