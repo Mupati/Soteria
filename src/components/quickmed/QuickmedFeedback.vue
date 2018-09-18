@@ -21,13 +21,13 @@
         <div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
         	 <div v-if="userAlert.error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
 				  <strong>{{userAlert.errorMsg}}</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.error = !userAlert.error">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
 			   <div v-if="userAlert.success" class="alert alert-success alert-dismissible fade show text-center" role="alert">
-				  <strong>Thank You! <em>{{feedback.name}}</em>. Your feedback has been recieved.</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <strong>Thank You! <em>{{feedback.name}}</em>. Your feedback has been received.</strong>.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.success = !userAlert.success, feedback={}">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
@@ -161,14 +161,13 @@
 	text-decoration: none;
 }
 .breadcrumb{
-	background: none;
+	padding: 0.2em 1em;
+	background: #fff;
 }
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
 }
-
 .card{
-	background:#08090a80 !important;
-}
-	
+	background-color: none;
+}	
 </style>

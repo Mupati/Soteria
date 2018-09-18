@@ -1,6 +1,6 @@
 <template>
 <div id="quickmedhome">	
-<header class="navbar navbar-expand-md  fixed-top mr-md-0 py-md-3" :class="{scrolled: scrollPosition > 50}" id="mainNav">
+<header class="navbar navbar-expand-md  fixed-top mr-md-0 py-md-3" :class="{scrolled: scrollPosition > 30, nextScrolled: scrollPosition > 550}" id="mainNav">
 	<router-link to="/" class="navbar-brand">
 			<img src="@/assets/soteria-text.png" class="d-inline">
 	</router-link>
@@ -24,7 +24,7 @@
 			  <!-- alert box for search box -->
 			  <div v-if="noKeyword" class="alert alert-danger alert-dismissible fade show" role="alert">
 				  <strong>There is no Personnel avaible in Location Entered - <em>{{searchlocation}}</em></strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="noKeyword = !noKeyword">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
@@ -132,7 +132,7 @@
 				searchResults:{},
 				noKeyword: false,
 				searchlocation: '',
-				scrollPosition: null,
+				scrollPosition: 0,
 				newBurger: false
 
 			}
@@ -206,7 +206,7 @@
 			},
 
 			updateScroll() {
-      			this.scrollPosition = window.scrollY
+				  this.scrollPosition = window.scrollY
     		}
 	
 			},
@@ -225,6 +225,9 @@
 
 	.scrolled{
 		background:#08090a80 !important;		
+	}
+	.nextScrolled{
+		background: #f6f8f9 !important;
 	}
 	
 	/* .hvr-underline-from-left {

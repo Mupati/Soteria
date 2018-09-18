@@ -117,6 +117,9 @@ export default{
     background: linear-gradient(90deg, #ddc 40%, #d40);
 }
 
+.card{
+	background-color: none;
+}	
 .card img{
     height: 7em;
     width: 8em;

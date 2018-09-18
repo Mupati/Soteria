@@ -185,7 +185,7 @@ export default {
 			if (res.payload.result.status == 0) {
 				that.$swal(
 					"Pending Activation",
-					"Sorry, Your account has not been activated yet",
+					"Successful Registration. You will be notified after Account verification",
 					"info"
 				);
 				that.$router.push({ path: "/quickmed" });
