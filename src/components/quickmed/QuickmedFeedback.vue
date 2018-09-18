@@ -91,7 +91,7 @@
 			 feedback:{},
 			 userAlert:{
 			 	error:false,
-			 	errorMsg: "Error!. Feedback Submission Unsuccessful. Check Your Form &#x1F614",
+			 	errorMsg: "Error!. Feedback Submission Unsuccessful. Check Your Form",
 			 	success:false,
 			 }
 			}
