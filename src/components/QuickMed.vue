@@ -174,7 +174,7 @@
 					where: ["location,"+this.searchlocation],
 					related: "*"
 				};
-				SDK.queryData("Ninja","details", params, function(res){
+				SDK.queryData("Quickmed","details", params, function(res){
 					that.searchResults = res.payload.results;
 				/*	console.log(that.searchResults);*/
 					if(that.searchResults.length != 0){

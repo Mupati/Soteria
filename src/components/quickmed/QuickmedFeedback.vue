@@ -123,7 +123,7 @@
 					console.log("Escaped this if");
 				}
 				else{
-			SDK.addData("Ninja", "feedback", that.feedback,
+			SDK.addData("Quickmed", "feedback", that.feedback,
 				function(res){
 					console.log(res.payload);
 					if(res.payload.length != 0 && res.payload.entry_id > 0){

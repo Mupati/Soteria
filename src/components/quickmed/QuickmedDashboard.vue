@@ -202,7 +202,7 @@ export default {
 				var params = {
 					where: ["users_id," + res.payload.result.id]
 				};
-				SDK.queryData("Ninja", "details", params, function(res) {
+				SDK.queryData("Quickmed", "details", params, function(res) {
 					that.profileInfo = res.payload.results[0];
 					if (that.profileInfo == undefined) {
 						that.profileInfo = {};
@@ -243,7 +243,7 @@ export default {
 			if(that.details.image == {}){
 				return;
 			}
-			SDK.addData("Ninja", "details", that.details, function(res) {
+			SDK.addData("Quickmed", "details", that.details, function(res) {
 				console.log(res);
 				if (res.status_code == 609) {
 					that.$swal("", "Profile Successfully updated", "success");
@@ -287,7 +287,7 @@ export default {
 				image: that.profileInfo.image
 			};
 			SDK.updateData(
-				"Ninja",
+				"Quickmed",
 				"details",
 				"id",
 				that.profileInfo.id,

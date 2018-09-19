@@ -120,8 +120,9 @@
 						that.details.lastName
 					],
 						function(resp){
-							/*console.log(resp.payload.result);
-							return;*/
+							console.log(resp.payload);
+							return;
+							/*return;*/
 							if(resp.payload.result[0] == false){
 								that.error = true;
 								that.errorMessage = 'No details found';
