@@ -24,7 +24,7 @@
 			  <!-- alert box for search box -->
 			  <div v-if="noKeyword" class="alert alert-danger alert-dismissible fade show" role="alert">
 				  <strong>There is no Personnel avaible in Location Entered - <em>{{searchlocation}}</em></strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="noKeyword = !noKeyword">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="noKeyword = !noKeyword, searching = false">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
@@ -34,7 +34,7 @@
 			        <div class="form-group">
 						<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
 					</div>
-				<button type="submit" class="btn btn-lg btn-outline-primary" @click.prevent="searchPersonnel">Reach Health Officer <i class="fa fa-search fa-lg"></i></button>
+				<button type="submit" class="btn btn-lg btn-outline-primary" @click.prevent="searchPersonnel" :disabled="searching">Reach Health Officer <i class="fa fa-search fa-lg" :class="{'fas fa-spinner fa-pulse' : searching}"></i></button>
 			</form>
 		</div>
 	</div>
@@ -133,7 +133,8 @@
 				noKeyword: false,
 				searchlocation: '',
 				scrollPosition: 0,
-				newBurger: false
+				newBurger: false,
+				searching: false,
 
 			}
 		},
@@ -170,6 +171,7 @@
 
 			searchPersonnel: function(){
 				var that = this
+				that.searching = !that.searching
 				var params = {
 					where: ["location,"+this.searchlocation],
 					related: "*"
@@ -189,6 +191,7 @@
 					}
 					else{
 						that.noKeyword = true;
+						that.searching = false;
 						/*that.$router.go({
 						    path: that.$router.path,
 						    query: {

@@ -9,7 +9,7 @@ yarn-error.log*
 selenium-debug.log
 *.txt
 /src/assets/favicon/*
-
+/static/css/*
 # Editor directories and files
 .idea
 .vscode

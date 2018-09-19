@@ -19,10 +19,10 @@
 			<!-- 	<p  class="text-danger">{{errorMessage}}</p> -->
 			<div v-if="error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
 				  <strong>{{errorMessage}}</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="error = !error">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="error = !error, submitting = !submitting">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
-			   </div>
+			</div>
 			   <div class="card">
 			    <div class="card-body">
                     <h3 class="card-title text-center">Register Here</h3>
@@ -59,7 +59,8 @@
 					  </div>
 					</div>
 					  <div class="d-flex justify-content-center mt-3 py-2 px-5">
-					  	<button type="submit" class="btn btn-outline-success text-center" v-on:click.prevent="signup">Sign up <i class="fas fa-user-plus"></i></button>
+					  	<button type="submit" class="btn btn-outline-success text-center" @click.prevent="signup" :disabled="submitting"> Sign up <i class="fas fa-user-plus" :class="{'fas fa-spinner fa-pulse' : submitting}"></i></button>
+						
 					  </div>
 				</form>
 			    </div>
@@ -95,20 +96,35 @@
 				details: {},
 				error: false,
 				errorMessage:'',
+				submitting: false,
 			}
 			
 		},
 
 		methods: {
 
+			isEmpty: function(obj){
+              	return jQuery.isEmptyObject(obj);
+           		},
+
+           	objSize: function(obj){
+           		return Object.keys(obj).length
+			   },
+
 			signup: function(){
 				var that = this;
-				if(that.details.pwd1 != that.details.pwd2)
-					{
-						that.error = true;
-						that.errorMessage = 'Password Mismatch';
-						return;
-					}
+				that.submitting = !that.submitting
+				if((that.isEmpty(that.details) || that.objSize(that.details)<5) || (that.details.pwd1 != that.details.pwd2)){
+					that.errorMessage =(that.isEmpty(that.details) || that.objSize(that.details)<5) ?"Please Complete all the fields":"Password Mismatch";
+					that.error = true;
+					return;
+				}
+				// if(that.details.pwd1 != that.details.pwd2)
+				// 	{
+				// 		that.error = true;
+				// 		that.errorMessage = 'Password Mismatch';
+				// 		return;
+				// 	}
 
 				SDK.call('devless', 'signUp', 
 					[
@@ -120,15 +136,13 @@
 						that.details.lastName
 					],
 						function(resp){
-							console.log(resp.payload);
-							return;
-							/*return;*/
-							if(resp.payload.result[0] == false){
+							// console.log(resp.payload);
+							if(resp.payload.error || resp.payload.result[0] == false){
+								that.errorMessage = (resp.payload.error) ? resp.payload.error.message:'Registration Failed!. Try again';
 								that.error = true;
-								that.errorMessage = 'No details found';
+								that.submitting = !that.submitting
 								return;
-							}
-							
+							}	
 							SDK.setToken(resp.payload.result.token);
 							that.$router.push({ path: "/quickmed/dashboard"});
 						});			

@@ -54,7 +54,7 @@
                 <label role="comment" class="control-label">Your Comments</label>
                 <textarea v-model="feedback.comment" class="form-control" required="true"></textarea> 
             </div>
-                <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success">Send Feedback <i class="fas fa-comment"></i></button>
+                <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success" :disabled="sending">Send Feedback <i class="fas fa-comment" :class="{'fas fa-spinner fa-pulse' : sending}"></i></button>
         </form>
     </fieldset>
 	</div>
@@ -93,7 +93,9 @@
 			 	error:false,
 			 	errorMsg: "Error!. Feedback Submission Unsuccessful. Check Your Form",
 			 	success:false,
-			 }
+			 },
+			 sending: false,
+
 			}
 		},
 
@@ -108,6 +110,7 @@
 
 			sendFeedback: function(){
 			var that = this;
+			that.sending = !that.sending;
 			/*var sent_feedback = {
 				"name": that.feedback.name,
 				"email": that.feedback.email,
@@ -118,14 +121,14 @@
 			/*alert(that.objSize(that.feedback));
 			alert(that.isEmpty(that.feedback));*/
 			if(that.isEmpty(that.feedback) || that.objSize(that.feedback)<3){
-					that.userAlert.errorMsg = "Please fill the form before you Submit"
+					that.userAlert.errorMsg = "Please Complete the form"
 					that.userAlert.error = true;
-					console.log("Escaped this if");
+					// console.log("Escaped this if");
 				}
 				else{
 			SDK.addData("Quickmed", "feedback", that.feedback,
 				function(res){
-					console.log(res.payload);
+					console.log(res);
 					if(res.payload.length != 0 && res.payload.entry_id > 0){
 						that.userAlert.success = true;
 					}
@@ -135,13 +138,18 @@
 					/*setTimeout(location.reload.bind(location), 5000);*/
 				});
 				}
+
+			that.sending = !that.sending
+
+
+
 			/*	else{
 					that.userAlert.errorMsg = "Please fill the form before you Submit"
 					that.userAlert.error = true;
 				}*/
 		/*	that.$router.push({path:"/quickmed"});*/
 			/*setTimeout(location.reload.bind(location), 5000);*/
-			setTimeout(that.$router.push({path:"/quickmed/feedback"}), 5000);
+			// setTimeout(that.$router.push({path:"/quickmed/feedback"}), 5000);
 		}
 	},
 
