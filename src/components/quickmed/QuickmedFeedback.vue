@@ -21,13 +21,13 @@
         <div class="col-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
         	 <div v-if="userAlert.error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
 				  <strong>{{userAlert.errorMsg}}</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.error = !userAlert.error">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.error = !userAlert.error, sending=false">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
 			   <div v-if="userAlert.success" class="alert alert-success alert-dismissible fade show text-center" role="alert">
 				  <strong>Thank You! <em>{{feedback.name}}</em>. Your feedback has been received.</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.success = !userAlert.success, feedback={}">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="userAlert.success = !userAlert.success, feedback={}, sending=false">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
@@ -54,7 +54,7 @@
                 <label role="comment" class="control-label">Your Comments</label>
                 <textarea v-model="feedback.comment" class="form-control" required="true"></textarea> 
             </div>
-                <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success" :disabled="sending">Send Feedback <i class="fas fa-comment" :class="{'fas fa-spinner fa-pulse' : sending}"></i></button>
+            <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success" :disabled="sending">Send Feedback <i class="fas fa-comment" :class="{'fas fa-spinner fa-pulse' : sending}"></i></button>
         </form>
     </fieldset>
 	</div>
@@ -110,7 +110,8 @@
 
 			sendFeedback: function(){
 			var that = this;
-			that.sending = !that.sending;
+			this.sending = !this.sending;
+			console.log(this.sending)
 			/*var sent_feedback = {
 				"name": that.feedback.name,
 				"email": that.feedback.email,
@@ -123,6 +124,7 @@
 			if(that.isEmpty(that.feedback) || that.objSize(that.feedback)<3){
 					that.userAlert.errorMsg = "Please Complete the form"
 					that.userAlert.error = true;
+					this.sending = !this.sending
 					// console.log("Escaped this if");
 				}
 				else{
@@ -131,15 +133,19 @@
 					console.log(res);
 					if(res.payload.length != 0 && res.payload.entry_id > 0){
 						that.userAlert.success = true;
+						that.sending = false
 					}
 					else{
 						that.userAlert.error = true;
+						that.userAlert.errorMsg = "Something went wrong. Kindly resend Feedback, Thank you!"
+						that.sending = false
 					}
 					/*setTimeout(location.reload.bind(location), 5000);*/
 				});
 				}
 
-			that.sending = !that.sending
+			// that.sending = !that.sending
+			console.log(that.sending)
 
 
 

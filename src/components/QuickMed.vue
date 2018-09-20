@@ -23,17 +23,23 @@
 		<div class="col-sm-12 col-md-8 offset-md-2 text-center">
 			  <!-- alert box for search box -->
 			  <div v-if="noKeyword" class="alert alert-danger alert-dismissible fade show" role="alert">
+				  <strong>Enter location name to search</strong>
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="noKeyword = !noKeyword, searching = false, error = false">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			   </div>
+			  <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
 				  <strong>There is no Personnel avaible in Location Entered - <em>{{searchlocation}}</em></strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="noKeyword = !noKeyword, searching = false">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="error = !error, searching = false, noKeyword = false">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			   </div>
 
 			<img src="@/assets/logo2.png" class="img img-fluid">		
 			<form role="form" class="mt-4">
-			        <div class="form-group">
-						<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
-					</div>
+				<div class="form-group">
+					<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
+				</div>
 				<button type="submit" class="btn btn-lg btn-outline-primary" @click.prevent="searchPersonnel" :disabled="searching">Reach Health Officer <i class="fa fa-search fa-lg" :class="{'fas fa-spinner fa-pulse' : searching}"></i></button>
 			</form>
 		</div>
@@ -152,7 +158,7 @@
 					function(res){
 						console.log(res);
 						if(res.payload.result == false){
-							that.$swal('Login Failed',"Email and Password do not match",'warning');
+							that.$swal('Login Failed',"Check Email and Password",'warning');
 							return;
 							/*that.error = true;
 							return;*/
@@ -172,6 +178,11 @@
 			searchPersonnel: function(){
 				var that = this
 				that.searching = !that.searching
+				if(this.searchlocation == ''){
+					that.noKeyword = true
+					that.searching = false
+					return;
+				}
 				var params = {
 					where: ["location,"+this.searchlocation],
 					related: "*"
@@ -190,7 +201,7 @@
 			/*		})*/
 					}
 					else{
-						that.noKeyword = true;
+						that.error = true;
 						that.searching = false;
 						/*that.$router.go({
 						    path: that.$router.path,

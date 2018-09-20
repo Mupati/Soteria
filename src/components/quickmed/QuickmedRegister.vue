@@ -19,7 +19,7 @@
 			<!-- 	<p  class="text-danger">{{errorMessage}}</p> -->
 			<div v-if="error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
 				  <strong>{{errorMessage}}</strong>.
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="error = !error, submitting = !submitting">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="error = !error, submitting = false">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 			</div>
@@ -59,8 +59,7 @@
 					  </div>
 					</div>
 					  <div class="d-flex justify-content-center mt-3 py-2 px-5">
-					  	<button type="submit" class="btn btn-outline-success text-center" @click.prevent="signup" :disabled="submitting"> Sign up <i class="fas fa-user-plus" :class="{'fas fa-spinner fa-pulse' : submitting}"></i></button>
-						
+					  	<button type="submit" class="btn btn-outline-success text-center" @click.prevent="signup" :disabled="submitting"> Sign up <i class="fas fa-sign-in-alt" :class="{'fas fa-spinner fa-pulse' : submitting}"></i></button>
 					  </div>
 				</form>
 			    </div>
@@ -113,10 +112,11 @@
 
 			signup: function(){
 				var that = this;
-				that.submitting = !that.submitting
+				this.submitting = !this.submitting;
 				if((that.isEmpty(that.details) || that.objSize(that.details)<5) || (that.details.pwd1 != that.details.pwd2)){
 					that.errorMessage =(that.isEmpty(that.details) || that.objSize(that.details)<5) ?"Please Complete all the fields":"Password Mismatch";
 					that.error = true;
+					this.submitting = !this.submitting;
 					return;
 				}
 				// if(that.details.pwd1 != that.details.pwd2)
@@ -140,7 +140,7 @@
 							if(resp.payload.error || resp.payload.result[0] == false){
 								that.errorMessage = (resp.payload.error) ? resp.payload.error.message:'Registration Failed!. Try again';
 								that.error = true;
-								that.submitting = !that.submitting
+								that.submitting = !that.submitting;
 								return;
 							}	
 							SDK.setToken(resp.payload.result.token);
