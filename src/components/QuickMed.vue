@@ -1,7 +1,7 @@
 <template>
 <div id="quickmedhome">	
 <header class="navbar navbar-expand-md  fixed-top mr-md-0 py-md-3" :class="{scrolled: scrollPosition > 30, nextScrolled: scrollPosition > 550}" id="mainNav">
-	<router-link to="/" class="navbar-brand">
+	<router-link to="/" class="navbar-brand hvr-underline-from-left">
 			<img src="@/assets/soteria-text.png" class="d-inline">
 	</router-link>
 	<button class="navbar-toggler" type="button" @click="burgerChange" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
@@ -9,10 +9,10 @@
 	</button>
 <div class="collapse navbar-collapse justify-content-around" id="topNav">
 	<ul class="navbar-nav float-right">	
-		<li class="navbar-item active ml-md-5 pl-md-5"><a class="nav-link" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
-		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
-		<li class="navbar-item mr-md-5 pr-md-5"><router-link  class="nav-link" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
-		<li class="navbar-item pl-md-5 ml-md-5"><router-link  class="nav-link" to="/quickmed/login"><i class="fas fa-user"></i> Log in</router-link></li>
+		<li class="navbar-item active ml-md-5 pl-md-5"><a class="nav-link hvr-underline-from-left" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
+		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link hvr-underline-from-left" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
+		<li class="navbar-item mr-md-5 pr-md-5"><router-link  class="nav-link hvr-underline-from-left" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
+		<li class="navbar-item pl-md-5 ml-md-5"><router-link  class="nav-link hvr-underline-from-left" to="/quickmed/login"><i class="fas fa-user"></i> Log in</router-link></li>
 	</ul>
 </div>
 </header>
@@ -233,6 +233,13 @@
 </script>
 
 <style scoped>
+	a:hover{
+		color: #0056b3;
+	}
+	a{
+    color: #52b289;
+	}
+
 	#quickmedhome, header{
 		background: linear-gradient(90deg, #ddc 40%, #d40) !important;
 	}
@@ -244,15 +251,38 @@
 		background: #f6f8f9 !important;
 	}
 	
-	/* .hvr-underline-from-left {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px transparent;
-    position: relative;
-    overflow: hidden;
-} */
+	.hvr-underline-from-left{
+		display: inline-block;
+		vertical-align: middle;
+		-webkit-transform: perspective(1px) translateZ(0);
+		transform: perspective(1px) translateZ(0);
+		box-shadow: 0 0 1px transparent;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hvr-underline-from-left:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 100%;
+		bottom: 0;
+		background: #5db48e;
+		height: 2px;
+		-webkit-transition-property: right;
+		transition-property: right;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+	}
+
+	.hvr-underline-from-left:hover:before, 
+	.hvr-underline-from-left:focus:before, 
+	.hvr-underline-from-left:active:before {
+    	right: 0;
+	}
 	.navbar-brand img{
 		height: 2.0em; 
 		width: 4.0em;
