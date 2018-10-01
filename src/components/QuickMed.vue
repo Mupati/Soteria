@@ -5,7 +5,7 @@
 			<img src="@/assets/soteria-text.png" class="d-inline">
 	</router-link>
 	<button class="navbar-toggler" type="button" @click="burgerChange" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="true" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"><i class="fas fa-2x fa-bars" :class="{'fas fa-times': newBurger}" ></i></span>
+		<span><i class="fas fa-2x fa-bars" :class="{'fas fa-times': newBurger}" ></i></span>
 	</button>
 <div class="collapse navbar-collapse justify-content-around" id="topNav">
 	<ul class="navbar-nav float-right">	
@@ -233,9 +233,9 @@
 </script>
 
 <style scoped>
-	a:hover{
+	/* a:hover{
 		color: #0056b3;
-	}
+	} */
 	a{
     color: #52b289;
 	}
