@@ -54,8 +54,10 @@
                 <label role="comment" class="control-label">Your Comments</label>
                 <textarea v-model="feedback.comment" class="form-control" required="true"></textarea> 
             </div>
-            <button type="submit" @click.prevent="sendFeedback" class="btn btn-block btn-outline-success" :disabled="sending">Send Feedback <i class="fas fa-comment" :class="{'fas fa-spinner fa-pulse' : sending}"></i></button>
-        </form>
+			<div class="d-flex justify-content-center mt-3 py-2 px-5">
+            	<button type="submit" @click.prevent="sendFeedback" class="btn btn-outline-success" :disabled="sending">Send Feedback <i class="fas fa-comment" :class="{'fas fa-spinner fa-pulse' : sending}"></i></button>
+			</div>
+	    </form>
     </fieldset>
 	</div>
 	</div>
@@ -168,6 +170,13 @@
 
 
 <style scoped>
+/* a:hover{
+		color: #0056b3;
+	} */
+a{
+color: #52b289;
+} 
+
 #feedback{
 	background: linear-gradient(90deg, #ddc 40%, #d40);
 }

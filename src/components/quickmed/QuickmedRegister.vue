@@ -153,6 +153,12 @@
 
 
 <style scoped>
+/* a:hover{
+		color: #0056b3;
+	} */
+a{
+color: #52b289;
+}
 #register{
 	background: linear-gradient(90deg, #ddc 40%, #d40);
 }

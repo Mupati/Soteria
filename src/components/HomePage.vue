@@ -25,7 +25,7 @@
           <div class="card-body">
             <img class="card-img-top" src="@/assets/logo2.png" alt="Pharmshop">
             <p class="card-text text-muted mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <router-link  v-bind:to="'/pharmshop'" class="card-link"><button class="btn btn-md btn-success">Search Drug <i class="fas fa-pills"></i></button></router-link>
+            <router-link  v-bind:to="'/pharmshop/home'" class="card-link"><button class="btn btn-md btn-success">Search Drug <i class="fas fa-pills"></i></button></router-link>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default {
   name: 'HomePage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
   }
 }

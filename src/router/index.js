@@ -17,6 +17,18 @@ import QuickmedFeedback from '@/components/quickmed/QuickmedFeedback'
 import QuickmedDashboard from '@/components/quickmed/QuickmedDashboard'
 import QuickmedSearchResults from '@/components/quickmed/QuickmedSearchResults'
 
+
+// components for Pharmshop
+import PharmshopHomepage from '@/components/pharmshop/PharmshopHomepage'
+import PharmshopAccount from '@/components/pharmshop/PharmshopAccount'
+import PharmshopCart from '@/components/pharmshop/PharmshopCart'
+import PharmshopLifestyle from '@/components/pharmshop/PharmshopLifestyle'
+import PharmshopLocate from '@/components/pharmshop/PharmshopLocate'
+
+
+
+
+
 Vue.use(vueSmoothScroll)
 Vue.use(VueSwal)
 Vue.use(Router)
@@ -92,12 +104,50 @@ export default new Router({
    /*Pharmshop pages*/
 
     {
-      path: '/pharmshop',
-      name: 'Pharmshop',
+      path: '/pharmshop/', 
       component: Pharmshop,
       meta:{
-      			'title': 'Soteria - Pharmshop'
-     	   }
+        'title': 'Pharmshop - Your Online Pharmacy'
+         },
+      children: [
+        {
+          path: 'home',
+          component: PharmshopHomepage,
+          meta:{
+            'title': 'Pharmaceutical Products Brought Closer - Pharmshop'
+             }
+        },
+        {
+          path: 'locate',
+          component: PharmshopLocate,
+          meta:{
+            'title': 'Pharmacy Locator - Pharmshop'
+             }
+        },
+        {
+
+          path: 'lifestyle',
+          component: PharmshopLifestyle,
+          meta:{
+            'title': 'Healthy Living Tips - Pharmshop'
+             }
+        },
+        {
+
+          path: 'account',
+          component: PharmshopAccount,
+          meta:{
+            'title': 'Customer Log in - Pharmshop'
+             }
+        },
+        {
+          path: 'cart',
+          component: PharmshopCart,
+          meta:{
+            'title': 'Cart Items - Pharmshop'
+             }
+        },
+      ]
     },
 
 
