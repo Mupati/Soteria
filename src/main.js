@@ -7,7 +7,6 @@ import router from './router'
 
 
 Vue.config.productionTip = false
-require('fs')
 
 router.beforeEach((to, from, next) => {
 	document.title = to.meta.title

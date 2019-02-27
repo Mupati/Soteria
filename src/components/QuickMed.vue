@@ -1,5 +1,5 @@
 <template>
-<div id="quickmedhome">	
+<div id="quickmedhome">
 <header class="navbar navbar-expand-md  fixed-top mr-md-0 py-md-3" :class="{scrolled: scrollPosition > 30, nextScrolled: scrollPosition > 550}" id="mainNav">
 	<router-link to="/" class="navbar-brand hvr-underline-from-left">
 			<img src="@/assets/soteria-text.png" class="d-inline">
@@ -8,7 +8,7 @@
 		<span><i class="fas fa-2x fa-bars" :class="{'fas fa-times': newBurger}" ></i></span>
 	</button>
 <div class="collapse navbar-collapse justify-content-around" id="topNav">
-	<ul class="navbar-nav float-right">	
+	<ul class="navbar-nav float-right">
 		<li class="navbar-item active ml-md-5 pl-md-5"><a class="nav-link hvr-underline-from-left" href="#serv" v-smooth-scroll="{ duration: 700, container: '#serv' }"><i class="fas fa-hospital"></i> Personnel</a></li>
 		<li class="navbar-item px-md-5 mx-md-5"><router-link  class="nav-link hvr-underline-from-left" to="/quickmed/feedback"><i class="fas fa-comments"></i> Feedback</router-link></li>
 		<li class="navbar-item mr-md-5 pr-md-5"><router-link  class="nav-link hvr-underline-from-left" to="/quickmed/register"><i class="fas fa-user-plus"></i> Register</router-link></li>
@@ -35,7 +35,7 @@
 				  </button>
 			   </div>
 
-			<img src="@/assets/logo2.png" class="img img-fluid">		
+			<img src="@/assets/logo2.png" class="img img-fluid">
 			<form role="form" class="mt-4">
 				<div class="form-group">
 					<input type="text" name="location" class="form-control" v-model="searchlocation" placeholder="Enter Your Location">
@@ -48,7 +48,7 @@
 
 <section id="serv">
 <div class="container py-5">
-	<h3 class="text-center mb-5"><i class="fas fa-2x fa-hospital"></i><br><br>PERSONNEL AVAILABLE</h3>		
+	<h3 class="text-center mb-5"><i class="fas fa-2x fa-hospital"></i><br><br>PERSONNEL AVAILABLE</h3>
 	<div class="row">
 			<div class="col-sm">
 				<div class="card border-0 text-center">
@@ -56,8 +56,8 @@
 				  	<img class="card-img-top thumbnail" src="@/assets/midwife.jpg" alt="Card image cap">
 				  	<h4 class="card-title text-center my-3">Midwife</h4>
 				    <p class="card-text text-justify">
-				    	Midwives deliver babies and provide antenatal and postnatal advice, care and 
-						support to women, their babies, their partners and families. Midwives need the 
+				    	Midwives deliver babies and provide antenatal and postnatal advice, care and
+						support to women, their babies, their partners and families. Midwives need the
 						ability to deal with emotionally charged situations as part of their everyday work.
 					</p>
 				  </div>
@@ -70,7 +70,7 @@
 				  	<img class="card-img-top" src="@/assets/doctor.jpg" alt="Card image cap">
 				  	<h4 class="card-title text-center my-3">Medical Doctor</h4>
 				    <p class="card-text text-justify">
-				    	Medical Doctors diagnose and treat medical conditions, disorders, and diseases 
+				    	Medical Doctors diagnose and treat medical conditions, disorders, and diseases
 						through the application of specialist medical skills and knowledge.
 					</p>
 				  </div>
@@ -83,7 +83,7 @@
 				  	<img class="card-img-top text-center" src="@/assets/nurse.jpg" alt="Card image cap">
 				  	<h4 class="card-title text-center my-3">Nurse</h4>
 				    <p class="card-text text-justify">
-				    	Nurses provide and coordinate patient care, educate patients and the public about 
+				    	Nurses provide and coordinate patient care, educate patients and the public about
 			   various health conditions, and provide advice and emotional support to patients and their family members.
 					</p>
 				  </div>
@@ -108,7 +108,7 @@
 
 <!--Footer-->
 
-<footer> 
+<footer>
 <div class="container my-3 pb-3">
 <div class="row">
 <div class="col-sm-12 col-md-8 offset-md-2 text-center">
@@ -151,10 +151,10 @@
 				this.newBurger = !this.newBurger
 			},
 
-			login: function() {	
-				
+			login: function() {
+
 				var that = this;
-				SDK.call('devless','login',["",that.credentials.email,"",that.credentials.pwd], 
+				SDK.call('devless','login',["",that.credentials.email,"",that.credentials.pwd],
 					function(res){
 						console.log(res);
 						if(res.payload.result == false){
@@ -172,7 +172,7 @@
 						that.$router.push({ path: "/quickmed/dashboard"});
 						}
 					});
-				
+
 			},
 
 			searchPersonnel: function(){
@@ -222,13 +222,13 @@
 			updateScroll() {
 				  this.scrollPosition = window.scrollY
     		}
-	
+
 			},
 
 			 mounted() {
     			window.addEventListener('scroll', this.updateScroll);
   			}
-		
+
 	}
 </script>
 
@@ -245,12 +245,12 @@
 	}
 
 	.scrolled{
-		background:#08090a80 !important;		
+		background:#08090a80 !important;
 	}
 	.nextScrolled{
 		background: #f6f8f9 !important;
 	}
-	
+
 	.hvr-underline-from-left{
 		display: inline-block;
 		vertical-align: middle;
@@ -278,16 +278,16 @@
 		transition-timing-function: ease-out;
 	}
 
-	.hvr-underline-from-left:hover:before, 
-	.hvr-underline-from-left:focus:before, 
+	.hvr-underline-from-left:hover:before,
+	.hvr-underline-from-left:focus:before,
 	.hvr-underline-from-left:active:before {
     	right: 0;
 	}
 	.navbar-brand img{
-		height: 2.0em; 
+		height: 2.0em;
 		width: 4.0em;
 		margin: 0;
-		padding: 0;	 
+		padding: 0;
 	}
 	.card img{
 		width: 12em;
